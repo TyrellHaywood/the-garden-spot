@@ -27,6 +27,7 @@ header {
 
   width: 100%;
   height: 100%;
+  position: fixed;
 
   nav {
     width: 100%;
@@ -219,6 +220,54 @@ header {
         width: 90%;
         font-size: 12px;
         font-family: "Noto Sans";
+      }
+    }
+  }
+}
+
+
+/* -----0o00-0oo0*.o0--EVENTS-STYLES--Oo.o*0o*----- */
+#events {
+  
+  h1 {
+    font-size: 40px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 35px;
+    font-family: "Noto Sans";
+    font-weight: 700;
+  }
+
+  .event {
+    width: 90%;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+
+    .event-img {
+      width: 45%;
+      background-color: #d9d9d9;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+
+    .event-text{ 
+      width: 55%;
+      background-color: white;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        font-family: "Noto Sans";
+        font-size: 12px;
+        width: 90%;
       }
     }
   }
