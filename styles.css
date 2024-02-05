@@ -272,3 +272,23 @@ header {
     }
   }
 }
+
+/* -----0o00-0oo0*.o0--CONTACT-STYLES--Oo.o*0o*----- */
+#contact {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #contact-text {
+    width: 80%;
+    text-align: center;
+
+    h1 {
+      font-family: "Rainball";
+      font-size: 84px;
+      color: var(--green);
+    }
+  }
+}
