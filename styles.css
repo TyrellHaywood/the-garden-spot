@@ -175,11 +175,50 @@ header {
       background-color: white;
       border-bottom-left-radius: 30px;
       border-bottom-right-radius: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       p {
         width: 80%;
         margin-left: auto;
         margin-right: auto;
+        font-family: "Noto Sans";
+      }
+    }
+  }
+
+  .spotlight {
+    width: 90%;
+    height: 65px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+
+    .spotlight-img {
+      width: 25%;
+      height: 100%;
+      background-color: #d9d9d9;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+
+    .spotlight-text-small{
+      width: 90%;
+      height: 100%;
+      background-color: white;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        width: 90%;
+        font-size: 12px;
+        font-family: "Noto Sans";
       }
     }
   }
