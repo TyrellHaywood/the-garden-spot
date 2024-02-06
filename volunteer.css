@@ -188,6 +188,10 @@ header {
     display: none;
   }
 
+  #sign-up-form.opened {
+    display: flex;
+  }
+
   /* -----0o00-0oo0*.o0--FOOTER-STYLES--Oo.o*0o*----- */
 footer {
     font-family: "Noto Sans";
