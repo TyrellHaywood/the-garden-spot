@@ -54,14 +54,14 @@ nav {
 }
 #nav-header-top {
   color: var(--black);
-  width: 100px;
+  width: 120px;
   font-size: 16px;
   margin: 0px;
   font-family: "Rainball";
 }
 #nav-header-bottom {
   color: var(--green);
-  width: 100px;
+  width: 120px;
   font-size: 16px;
   margin: 0px;
   font-family: "Rainball";
@@ -290,6 +290,7 @@ footer {
   align-items: center;
   justify-content: center;
   color: white;
+  position: absolute;
 }
 
 #footer-h1 {
