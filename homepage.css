@@ -52,7 +52,6 @@ nav {
   margin-right: auto;
   margin-left: 8px;
 }
-
 #nav-header-top {
   color: var(--black);
   width: 100px;
@@ -296,10 +295,12 @@ footer {
 #footer-h1 {
   font-size: 20px;
   font-weight: 700;
+  margin: 0px;
 }
 
 .footer-p {
   font-size: 12px;
+  margin: 0px;
 }
 
 #email {
@@ -308,16 +309,21 @@ footer {
   margin-bottom: 8px;
 }
 
+#copyright {
+  margin-top: 8px;
+}
+
 .socials {
+  width: 300px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  background-color: #d9d9d9;
 }
 .social-button {
   width: 50px;
   height: 50px;
-
+  background-color: #d9d9d9;
+  border-radius: 15px;
 }
   
