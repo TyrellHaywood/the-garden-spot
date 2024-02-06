@@ -153,6 +153,7 @@ header {
   /* -----0o00-0oo0*.o0--VOLUNTEER-STYLES--Oo.o*0o*----- */
 #volunteer {
     margin-top: 35px;
+    margin-bottom: 35px;
     font-family: "Noto Sans";
   }
   
@@ -170,6 +171,18 @@ header {
     margin-right: auto;
   }
 
+  #sign-up {
+    border: none;
+    background-color: var(--green);
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 35px;
+    margin-left: 5%;
+  }
 
   /* -----0o00-0oo0*.o0--FOOTER-STYLES--Oo.o*0o*----- */
 footer {
