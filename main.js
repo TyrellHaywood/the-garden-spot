@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // sign up elements
     const signUpForm = document.getElementById('sign-up-form');
     const signUpButton = document.getElementById('sign-up');
+    const expandLess = document.getElementById('expand-less');
 
     // nav bar event lsitener fxn
     toggleMenuBtn.addEventListener('click', () => {
@@ -20,9 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
       infoContainer.classList.toggle('menu-opened');
     });
 
-
+    // sign up form event listener fxn
     signUpButton.addEventListener('click', () => {
-
       signUpForm.classList.toggle('opened');
+      signUpButton.classList.toggle('hidden');
+    });
+
+    expandLess.addEventListener('click', () => {
+      signUpForm.classList.remove('opened');
     });
   });
