@@ -16,11 +16,14 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
-
 }
 
 a {
   text-decoration: none;
+}
+
+* {
+  margin: 0px;
 }
 
 /* -----0o00-0oo0*.o0--HEADER-STYLES--Oo.o*0o*----- */
@@ -29,6 +32,8 @@ header {
   width: 100%;
   height: 75px;
   position: fixed;
+  position: fixed;
+  top: 0;
   transition: .1s;
 }
 
@@ -114,6 +119,60 @@ nav {
   background-color: transparent;
   margin-right: 25px;
 }
+
+/* -----0o00-0oo0*.o0--HERO-STYLES--Oo.o*0o*----- */
+#hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+#hero-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+}
+
+.hero-img {
+  width: 90%;
+  height: 300px;
+  background-color: #d9d9d9;
+  border-radius: 30px;
+}
+
+.hero-text {
+  width: 90%;
+  margin-top: 8px;
+  font-family: "Noto Sans";
+  font-size: 12px;
+}
+
+/* -----0o00-0oo0*.o0--ABOUT-US-STYLES--Oo.o*0o*----- */
+#about-us {
+  background-color: #d9d9d9;
+  margin-top: 25px;
+  font-family: "Noto Sans";
+}
+
+#about-us-h1{
+  font-size: 40px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#about-us-text {
+  font-size: 12px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 
  /* -----0o00-0oo0*.o0--FOOTER-STYLES--Oo.o*0o*----- */
 footer {
