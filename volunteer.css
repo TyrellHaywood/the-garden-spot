@@ -184,6 +184,10 @@ header {
     margin-left: 5%;
   }
 
+  #sign-up-form {
+    display: none;
+  }
+
   /* -----0o00-0oo0*.o0--FOOTER-STYLES--Oo.o*0o*----- */
 footer {
     font-family: "Noto Sans";
