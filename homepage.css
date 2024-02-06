@@ -19,7 +19,9 @@ body {
 
 }
 
-
+a {
+  text-decoration: none;
+}
 
 /* -----0o00-0oo0*.o0--HEADER-STYLES--Oo.o*0o*----- */
 
