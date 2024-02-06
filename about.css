@@ -134,7 +134,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: green;
+  margin-top: 25px;
 }
 
 .hero-img {
@@ -153,8 +153,7 @@ nav {
 
 /* -----0o00-0oo0*.o0--ABOUT-US-STYLES--Oo.o*0o*----- */
 #about-us {
-  background-color: #d9d9d9;
-  margin-top: 25px;
+  margin-top: 35px;
   font-family: "Noto Sans";
 }
 
@@ -171,6 +170,66 @@ nav {
   margin-left: auto;
   margin-right: auto;
 }
+
+
+/* -----0o00-0oo0*.o0--TEAM-STYLES--Oo.o*0o*----- */
+#team {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 35px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: "Noto Sans";
+}
+
+#team-h1{
+  font-size: 40px;
+  font-family: "Noto Sans";
+  margin-right: auto;
+  margin-bottom: 35px;
+}
+
+.team-member {
+  height: 250px;
+  width: 40%;
+  max-width: 160px;
+  background-color: #d9d9d9;
+  border-radius: 30px;
+  margin-right: 7.5px;
+  margin-left: 7.5px;
+  margin-bottom: 15px;
+}
+
+.headshot {
+  height: 150px;
+}
+
+
+.overview {
+  height: 100px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12px;
+  background-color: white;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overview-text {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 
 
 
