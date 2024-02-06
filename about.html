@@ -11,21 +11,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Knewave&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="main.js" defer></script>
 </head>
 <body>
     <main>
-        <header>
-            <nav>
+        <header id="header">
+            <nav id="nav">
                 <div id="logo"></div>
                 <div id="header-text">
-                    <h1 id="nav-header-top">The Carleton</h1>
-                    <h1 id="nav-header-bottom"> Food Collective</h1>
+                    <a href="index.html" id="nav-header-top">THE CARLETON</a>
+                    <a href="index.html" id="nav-header-bottom">FOOD COLLECTIVE</a>
                 </div>
                 <button id="toggle-menu">
                     <span class="material-symbols-outlined">menu</span>
                 </button>
             </nav>
-        </header>
+            <div id="menu-items">
+                <a href="/about.html">About</a>
+                <a href="/volunteer.html">Volunteer</a>
+                <a href="/blog.html">Blog</a>
+            </div>
+        </header> 
     </main>
     <footer>
         <h1 id="footer-h1">The Carleton Food Collective</h1>
