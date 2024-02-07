@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   // GET request to retrieve data from CMS for spotlights
-  fetch('admin/#/collections/spotlights')
+  fetch('https://thegardenspot.netlify.app/admin/#/collections/spotlights')
   .then(response => response.json())
   .then(data => {
     // Process the retrieved data and update the HTML content for spotlights
