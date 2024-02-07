@@ -30,4 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
     expandLess.addEventListener('click', () => {
       signUpForm.classList.remove('opened');
     });
+
+    // GET request to retrieve data from CMS
+  fetch('/admin/api/collections/spotlights')
+  .then(response => response.json())
+  .then(data => {
+    // Process the retrieved data and update the HTML content
+    console.log(data); // Example: Log the retrieved data to the console
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
   });
