@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   // GET request to retrieve data from CMS for spotlights
-  fetch('/admin/api/collections/spotlights')
+  fetch('admin/#/collections/spotlights')
   .then(response => response.json())
   .then(data => {
     // Process the retrieved data and update the HTML content for spotlights
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // GET request to retrieve data from CMS for events
-  fetch('/admin/api/collections/events')
+  fetch('admin/#/collections/events')
   .then(response => response.json())
   .then(data => {
     // Process the retrieved data and update the HTML content for events
