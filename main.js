@@ -31,15 +31,45 @@ document.addEventListener('DOMContentLoaded', () => {
       signUpForm.classList.remove('opened');
     });
 
-    // GET request to retrieve data from CMS
+  // GET request to retrieve data from CMS for spotlights
   fetch('/admin/api/collections/spotlights')
   .then(response => response.json())
   .then(data => {
-    // Process the retrieved data and update the HTML content
-    console.log(data); // Example: Log the retrieved data to the console
+    // Process the retrieved data and update the HTML content for spotlights
+    const mainSpotlight = document.getElementById('main-spotlight');
+    const spotlightImgs = document.querySelectorAll('.spotlight-img img');
+    const spotlightTexts = document.querySelectorAll('.spotlight-p');
+
+    // Update main spotlight content
+    mainSpotlight.querySelector('img').src = data[0].image;
+    mainSpotlight.querySelector('.spotlight-p').textContent = data[0].description;
+
+    // Update smaller spotlights content
+    for (let i = 0; i < spotlightImgs.length; i++) {
+      spotlightImgs[i].src = data[i + 1].image; // Skip the first item as it's for main spotlight
+      spotlightTexts[i].textContent = data[i + 1].description;
+    }
   })
   .catch(error => {
-    console.error('Error fetching data:', error);
+    console.error('Error fetching data for spotlights:', error);
   });
 
+  // GET request to retrieve data from CMS for events
+  fetch('/admin/api/collections/events')
+  .then(response => response.json())
+  .then(data => {
+    // Process the retrieved data and update the HTML content for events
+    const eventImgs = document.querySelectorAll('.event-img img');
+    const eventTexts = document.querySelectorAll('.event-p');
+
+    // Update events content
+    for (let i = 0; i < eventImgs.length; i++) {
+      eventImgs[i].src = data[i].image;
+      eventTexts[i].textContent = data[i].description;
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching data for events:', error);
   });
+
+});
