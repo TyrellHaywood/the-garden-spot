@@ -51,11 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(markdownContent => {
               // Parse the Markdown content to extract metadata and content
               const metadata = parseMarkdownMetadata(markdownContent);
-              const description = metadata.description;
+              const title = metadata.title;
               const imageUrl = metadata.image;
+              const description = metadata.description;
               
               // Use the extracted metadata to update the UI
-              const mainSpotlight = document.getElementById('main-spotlight');
+              const mainSpotlight = document.getElementsByClassName('spotlight');
               mainSpotlight.querySelector('img').src = imageUrl;
               mainSpotlight.querySelector('.spotlight-p').textContent = description;
             })
