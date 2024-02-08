@@ -32,39 +32,39 @@ document.addEventListener('DOMContentLoaded', () => {
         return response.json();
       })
       .then(data => {
+        console.log("data: ", data); // Log the data array for debugging
 
-        console.log("data: " + data)
-        // Extract content from the Markdown file
-        const markdownContentUrl = data.download_url;
-        
-        console.log("markdownContentUrl :" + markdownContentUrl);
+        // Iterate over each item in the data array
+        data.forEach(item => {
+          const markdownContentUrl = item.download_url;
 
-        fetch(markdownContentUrl)
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Failed to fetch Markdown file');
-            }
-            return response.text(); // Get the response body as text
-          })
-          .then(markdownContent => {
-            // Parse the Markdown content to extract metadata and content
-            const metadata = parseMarkdownMetadata(markdownContent);
-            const description = metadata.description;
-            const imageUrl = metadata.image;
-            
-            // Use the extracted metadata to update the UI
-            const mainSpotlight = document.getElementById('main-spotlight');
-            mainSpotlight.querySelector('img').src = imageUrl;
-            mainSpotlight.querySelector('.spotlight-p').textContent = description;
-          })
-          .catch(error => {
-            console.error('Error fetching or parsing Markdown file:', error);
-          });
+          // Perform fetch request for each markdown content URL
+          fetch(markdownContentUrl)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Failed to fetch Markdown file');
+              }
+              return response.text(); // Get the response body as text
+            })
+            .then(markdownContent => {
+              // Parse the Markdown content to extract metadata and content
+              const metadata = parseMarkdownMetadata(markdownContent);
+              const description = metadata.description;
+              const imageUrl = metadata.image;
+              
+              // Use the extracted metadata to update the UI
+              const mainSpotlight = document.getElementById('main-spotlight');
+              mainSpotlight.querySelector('img').src = imageUrl;
+              mainSpotlight.querySelector('.spotlight-p').textContent = description;
+            })
+            .catch(error => {
+              console.error('Error fetching or parsing Markdown file:', error);
+            });
+        });
       })
-      .catch(error => {
-        console.error('Error fetching data for spotlights from GitHub:', error);
-      });
-
+  .catch(error => {
+    console.error('Error fetching data for spotlights from GitHub:', error);
+  });
     // nav bar elements
     const toggleMenuBtn = document.getElementById('toggle-menu');
     const menuItems = document.getElementById('menu-items');
