@@ -7,22 +7,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = `https://api.github.com/repos/${repository}/contents/_posts/spotlights?ref=${branch}`;
   
     const parseMarkdownMetadata = (markdownContent) => {
-      const metadataRegex = /^---\r?\n(.*?)\r?\n---\r?\n([\s\S]*)/;
-      const match = markdownContent.match(metadataRegex);
-      if (match) {
-        const metadataString = match[1];
-        const metadata = {};
-        metadataString.split('\n').forEach(line => {
-          const parts = line.split(':');
-          const key = parts[0].trim();
-          const value = parts.slice(1).join(':').trim();
-          metadata[key] = value;
-        });
-        return metadata;
-      } else {
-        return {};
+      const metadata = {};
+      const lines = markdownContent.split('\n');
+      let isMetadataSection = false;
+  
+      for (let line of lines) {
+          if (line.trim() === '---') {
+              // Toggle the flag to indicate metadata section
+              isMetadataSection = !isMetadataSection;
+              continue;
+          }
+  
+          // Parse metadata lines only if within the metadata section
+          if (isMetadataSection) {
+              const [key, value] = line.split(':').map(item => item.trim());
+              metadata[key] = value;
+          }
       }
-    };
+  
+      return metadata;
+  };
+  
   
     fetch(apiUrl)
       .then(response => {
@@ -43,26 +48,45 @@ document.addEventListener('DOMContentLoaded', () => {
           // Perform fetch request for each markdown content URL
           fetch(markdownContentUrl)
             .then(response => {
-              if (!response.ok) {
-                throw new Error('Failed to fetch Markdown file');
-              }
-              return response.text(); // Get the response body as text
+                if (!response.ok) {
+                    throw new Error('Failed to fetch Markdown file');
+                }
+                return response.text(); // Get the response body as text
             })
             .then(markdownContent => {
-              // Parse the Markdown content to extract metadata and content
-              const metadata = parseMarkdownMetadata(markdownContent);
-              const title = metadata.title;
-              const imageUrl = metadata.image;
-              const description = metadata.description;
-              
-              // Use the extracted metadata to update the UI
-              const mainSpotlight = document.getElementsByClassName('spotlight');
-              mainSpotlight.querySelector('img').src = imageUrl;
-              mainSpotlight.querySelector('.spotlight-p').textContent = description;
-            })
-            .catch(error => {
-              console.error('Error fetching or parsing Markdown file:', error);
-            });
+
+              console.log(`markdownContent before parse: ${markdownContent}`)
+
+                // Parse the Markdown content to extract metadata and content
+                const metadata = parseMarkdownMetadata(markdownContent);
+                const title = metadata.title;
+                const imageUrl = metadata.image;
+                const description = metadata.description;
+
+                console.log(`metaData: ${metadata}`)
+                console.log(`Title: ${title}, imageUrl: ${imageUrl}, and description: ${description}`)
+
+                // Use the extracted metadata to update the UI
+                const smallSpotlights = document.getElementsByClassName('spotlight');
+
+                // Loop through each spotlight element
+                Array.from(smallSpotlights).forEach(spotlight => {
+                    // Update image source
+                    spotlight.querySelector('img').src = imageUrl;
+
+                    // Update description
+                    const descriptionElement = spotlight.querySelector('.spotlight-p');
+                    if (descriptionElement) {
+                        descriptionElement.textContent = description;
+                    } else {
+                        console.error('Description element not found in spotlight:', spotlight);
+                    }
+                });
+    })
+    .catch(error => {
+        console.error('Error fetching or parsing Markdown file:', error);
+    });
+
         });
       })
   .catch(error => {
