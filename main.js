@@ -32,13 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   // GET request to retrieve data from CMS for spotlights
-  fetch('https://thegardenspot.netlify.app/admin/#/collections/spotlights')
+  fetch('https://github.com/TyrellHaywood/the-garden-spot/posts/spotlights')
   .then(response => response.json())
   .then(data => {
     // Process the retrieved data and update the HTML content for spotlights
     const mainSpotlight = document.getElementById('main-spotlight');
     const spotlightImgs = document.querySelectorAll('.spotlight-img img');
     const spotlightTexts = document.querySelectorAll('.spotlight-p');
+
+    console.log("retrieved data from api.")
 
     // Update main spotlight content
     mainSpotlight.querySelector('img').src = data[0].image;
@@ -55,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // GET request to retrieve data from CMS for events
-  fetch('admin/#/collections/events')
+  fetch('https://thegardenspot.netlify.app/admin/#/collections/spotlights')
   .then(response => response.json())
   .then(data => {
     // Process the retrieved data and update the HTML content for events

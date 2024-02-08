@@ -2,6 +2,8 @@
 
 backend:
   name: git-gateway
+  repo: "TyrellHaywood/the-garden-spot"
+  api_root: https://api.github.com
   branch: main
 media_folder: "images/uploads"
 
