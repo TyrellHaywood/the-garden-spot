@@ -13,12 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
   
       for (let line of lines) {
           if (line.trim() === '---') {
-              // Toggle the flag to indicate metadata section
+              // toggle the flag to indicate metadata section
               isMetadataSection = !isMetadataSection;
               continue;
           }
   
-          // Parse metadata lines only if within the metadata section
+          // parse metadata lines only if within the metadata section
           if (isMetadataSection) {
               const [key, value] = line.split(':').map(item => item.trim());
               metadata[key] = value;
@@ -37,15 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return response.json();
       })
       .then(data => {
-        console.log("data: ", data); // Log the data array for debugging
+        console.log("data: ", data); // log the data array for debugging
 
-        // Iterate over each item in the data array
+        // iterate over each item in the data array
         data.forEach(item => {
           const markdownContentUrl = item.download_url;
 
           console.log(markdownContentUrl)
 
-          // Perform fetch request for each markdown content URL
+          // perform fetch request for each markdown content URL
           fetch(markdownContentUrl)
             .then(response => {
                 if (!response.ok) {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
               console.log(`markdownContent before parse: ${markdownContent}`)
 
-                // Parse the Markdown content to extract metadata and content
+                // parse the Markdown content to extract metadata and content
                 const metadata = parseMarkdownMetadata(markdownContent);
                 const title = metadata.title;
                 const imageUrl = metadata.image;
@@ -66,15 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(`metaData: ${metadata}`)
                 console.log(`Title: ${title}, imageUrl: ${imageUrl}, and description: ${description}`)
 
-                // Use the extracted metadata to update the UI
+                // use the extracted metadata to update the UI
                 const smallSpotlights = document.getElementsByClassName('spotlight');
 
-                // Loop through each spotlight element
+                // loop through each spotlight element
                 Array.from(smallSpotlights).forEach(spotlight => {
-                    // Update image source
+                    // update image source
                     spotlight.querySelector('img').src = imageUrl;
 
-                    // Update description
+                    // update description
                     const descriptionElement = spotlight.querySelector('.spotlight-p');
                     if (descriptionElement) {
                         descriptionElement.textContent = description;
