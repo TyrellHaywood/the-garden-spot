@@ -1,39 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // GET request to retrieve data from GitHub for spotlights
-  const repository = 'TyrellHaywood/the-garden-spot';
-  const branch = 'main'; // or 'master', depending on your repository's default branch
-
-  const apiUrl = `https://api.github.com/repos/${repository}/contents/_posts/spotlights?ref=${branch}`;
-
-  fetch(apiUrl)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+  
+    // GET request to retrieve data from GitHub for spotlights
+    const repository = 'TyrellHaywood/the-garden-spot';
+    const branch = 'main'; // or 'master', depending on your repository's default branch
+  
+    const apiUrl = `https://api.github.com/repos/${repository}/contents/_posts/spotlights?ref=${branch}`;
+  
+    const parseMarkdownMetadata = (markdownContent) => {
+      const metadataRegex = /^---\r?\n(.*?)\r?\n---\r?\n([\s\S]*)/;
+      const match = markdownContent.match(metadataRegex);
+      if (match) {
+        const metadataString = match[1];
+        const metadata = {};
+        metadataString.split('\n').forEach(line => {
+          const parts = line.split(':');
+          const key = parts[0].trim();
+          const value = parts.slice(1).join(':').trim();
+          metadata[key] = value;
+        });
+        return metadata;
+      } else {
+        return {};
       }
-      return response.json();
-    })
-    .then(data => {
-      // Process the retrieved data and update the HTML content for spotlights
-      const mainSpotlight = document.getElementById('main-spotlight');
-      const spotlightImgs = document.querySelectorAll('.spotlight-img img');
-      const spotlightTexts = document.querySelectorAll('.spotlight-p');
-
-      console.log("retrieved data from GitHub.");
-
-      // Update main spotlight content
-      mainSpotlight.querySelector('img').src = data[0].image;
-      mainSpotlight.querySelector('.spotlight-p').textContent = data[0].description;
-
-      // Update smaller spotlights content
-      for (let i = 0; i < spotlightImgs.length; i++) {
-        spotlightImgs[i].src = data[i + 1].image; // Skip the first item as it's for main spotlight
-        spotlightTexts[i].textContent = data[i + 1].description;
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching data for spotlights from GitHub:', error);
-        console.log("dataf fetched!")
-    });
+    };
+  
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Extract content from the Markdown file
+        const markdownContentUrl = data.download_url;
+  
+        fetch(markdownContentUrl)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Failed to fetch Markdown file');
+            }
+            return response.text(); // Get the response body as text
+          })
+          .then(markdownContent => {
+            // Parse the Markdown content to extract metadata and content
+            const metadata = parseMarkdownMetadata(markdownContent);
+            const description = metadata.description;
+            const imageUrl = metadata.image;
+            
+            // Use the extracted metadata to update the UI
+            const mainSpotlight = document.getElementById('main-spotlight');
+            mainSpotlight.querySelector('img').src = imageUrl;
+            mainSpotlight.querySelector('.spotlight-p').textContent = description;
+          })
+          .catch(error => {
+            console.error('Error fetching or parsing Markdown file:', error);
+          });
+      })
+      .catch(error => {
+        console.error('Error fetching data for spotlights from GitHub:', error);
+      });
 
     // nav bar elements
     const toggleMenuBtn = document.getElementById('toggle-menu');
