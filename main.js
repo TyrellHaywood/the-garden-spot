@@ -31,47 +31,39 @@ document.addEventListener('DOMContentLoaded', () => {
       signUpForm.classList.remove('opened');
     });
 
-  // GET request to retrieve data from CMS for spotlights
-  fetch('https://github.com/TyrellHaywood/the-garden-spot/posts/spotlights')
-  .then(response => response.json())
-  .then(data => {
-    // Process the retrieved data and update the HTML content for spotlights
-    const mainSpotlight = document.getElementById('main-spotlight');
-    const spotlightImgs = document.querySelectorAll('.spotlight-img img');
-    const spotlightTexts = document.querySelectorAll('.spotlight-p');
+  // GET request to retrieve data from GitHub for spotlights
+  const repository = 'TyrellHaywood/the-garden-spot';
+  const branch = 'main'; // or 'master', depending on your repository's default branch
 
-    console.log("retrieved data from api.")
+  const apiUrl = `https://api.github.com/repos/${repository}/contents/posts/spotlights?ref=${branch}`;
 
-    // Update main spotlight content
-    mainSpotlight.querySelector('img').src = data[0].image;
-    mainSpotlight.querySelector('.spotlight-p').textContent = data[0].description;
+  fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Process the retrieved data and update the HTML content for spotlights
+      const mainSpotlight = document.getElementById('main-spotlight');
+      const spotlightImgs = document.querySelectorAll('.spotlight-img img');
+      const spotlightTexts = document.querySelectorAll('.spotlight-p');
 
-    // Update smaller spotlights content
-    for (let i = 0; i < spotlightImgs.length; i++) {
-      spotlightImgs[i].src = data[i + 1].image; // Skip the first item as it's for main spotlight
-      spotlightTexts[i].textContent = data[i + 1].description;
-    }
-  })
-  .catch(error => {
-    console.error('Error fetching data for spotlights:', error);
-  });
+      console.log("retrieved data from GitHub.");
 
-  // GET request to retrieve data from CMS for events
-  fetch('https://thegardenspot.netlify.app/admin/#/collections/spotlights')
-  .then(response => response.json())
-  .then(data => {
-    // Process the retrieved data and update the HTML content for events
-    const eventImgs = document.querySelectorAll('.event-img img');
-    const eventTexts = document.querySelectorAll('.event-p');
+      // Update main spotlight content
+      mainSpotlight.querySelector('img').src = data[0].image;
+      mainSpotlight.querySelector('.spotlight-p').textContent = data[0].description;
 
-    // Update events content
-    for (let i = 0; i < eventImgs.length; i++) {
-      eventImgs[i].src = data[i].image;
-      eventTexts[i].textContent = data[i].description;
-    }
-  })
-  .catch(error => {
-    console.error('Error fetching data for events:', error);
-  });
+      // Update smaller spotlights content
+      for (let i = 0; i < spotlightImgs.length; i++) {
+        spotlightImgs[i].src = data[i + 1].image; // Skip the first item as it's for main spotlight
+        spotlightTexts[i].textContent = data[i + 1].description;
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching data for spotlights from GitHub:', error);
+    });
 
 });
