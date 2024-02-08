@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
+
     // GET request to retrieve data from GitHub for spotlights
     const repository = 'TyrellHaywood/the-garden-spot';
     const branch = 'main'; // or 'master', depending on your repository's default branch
@@ -34,7 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(data => {
         // Extract content from the Markdown file
         const markdownContentUrl = data.download_url;
-  
+        
+        console.log(markdownContentUrl);
+
         fetch(markdownContentUrl)
           .then(response => {
             if (!response.ok) {
