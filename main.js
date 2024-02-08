@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Extract content from the Markdown file
         const markdownContentUrl = data.download_url;
         
-        console.log(markdownContentUrl);
+        console.log("markdownContentUrl :" + markdownContentUrl);
 
         fetch(markdownContentUrl)
           .then(response => {
