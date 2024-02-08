@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
           data.forEach(item => {
               const markdownContentUrl = item.download_url;
 
-              // ierform fetch request for each markdown content URL
+              // perform fetch request for each markdown content URL
               fetch(markdownContentUrl)
                   .then(response => {
                       if (!response.ok) {
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                       const eventElement = createEventElement(imageUrl, description);
 
                       // append the event element to the event section
-                      const eventSection = document.getElementById('event');
+                      const eventSection = document.getElementById('events');
                       eventSection.appendChild(eventElement);
                   })
                   .catch(error => {

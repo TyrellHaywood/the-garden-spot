@@ -297,6 +297,13 @@ nav {
   border-bottom-left-radius: 15px;
 }
 
+.event-img-image {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
 .event-text{ 
   width: 55%;
   background-color: white;
