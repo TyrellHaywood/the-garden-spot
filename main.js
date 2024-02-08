@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         data.forEach(item => {
           const markdownContentUrl = item.download_url;
 
+          console.log(markdownContentUrl)
+
           // Perform fetch request for each markdown content URL
           fetch(markdownContentUrl)
             .then(response => {
