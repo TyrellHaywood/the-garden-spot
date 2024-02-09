@@ -197,17 +197,24 @@ nav {
   margin-right: auto;
   margin-left: auto;
   margin-top: 35px;
-  background-color: #d9d9d9;
   display: flex;
   flex-direction: column;
   border-radius: 30px;
 }
+
+#main-spotlight-img {
+  height: 200px;
+  background-color: #d9d9d9;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
 #spotlight-img {
   height: 200px;
   width: 100%;
 }
 
-#main-spotlight-text {
+#spotlight-text {
   height: 100px;
   width: 100%;
   background-color: white;
