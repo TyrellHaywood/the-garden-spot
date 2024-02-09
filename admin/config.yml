@@ -7,7 +7,10 @@ backend:
   branch: main
 media_folder: "images/uploads"
 
+
+
 collections:
+  #-----o0oO-0o.0-00.-----HOMEPAGE-COLLECTIONS-Oo0OoO.-O0.o0Ooo--------
   - name: "spotlights"
     label: "Spotlights"
     folder: "_posts/spotlights"
@@ -41,6 +44,49 @@ collections:
   - name: "mainSpotlight"
     label: "MainSpotlight"
     folder: "_posts/mainSpotlight"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "markdown" }
+
+
+  #-----o0oO-0o.0-00.-----ABOUT-US-COLLECTIONS-Oo0OoO.-O0.o0Ooo--------
+
+    - name: "imageOne"
+    label: "ImageOne"
+    folder: "_posts/imageOne"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "markdown" }
+
+  - name: "imageTwo"
+    label: "ImageTwo"
+    folder: "_posts/imageTwo"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "markdown" }
+
+  - name: "aboutUs"
+    label: "AboutUs"
+    folder: "_posts/aboutUs"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "markdown" }
+
+  - name: "teamMember"
+    label: "TeamMember"
+    folder: "_posts/teamMember"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
