@@ -39,9 +39,9 @@ collections:
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Description", name: "description", widget: "markdown" }
 
-  - name: "mainspotlight"
-    label: "Mainspotlight"
-    folder: "_posts/mainspotlight"
+  - name: "mainSpotlight"
+    label: "MainSpotlight"
+    folder: "_posts/mainSpotlight"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
