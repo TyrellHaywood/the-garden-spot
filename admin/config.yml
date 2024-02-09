@@ -41,9 +41,9 @@ collections:
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Description", name: "description", widget: "markdown" }
 
-  - name: "mainSpotlight"
-    label: "MainSpotlight"
-    folder: "_posts/mainSpotlight"
+  - name: "mainspotlight"
+    label: "Mainspotlight"
+    folder: "_posts/mainspotlight"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -54,15 +54,15 @@ collections:
 
   #-----o0oO-0o.0-00.-----ABOUT-US-COLLECTIONS-Oo0OoO.-O0.o0Ooo--------
 
-    - name: "imageOne"
-    label: "ImageOne"
-    folder: "_posts/imageOne"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Description", name: "description", widget: "markdown" }
+  - name: "imageOne"
+  label: "ImageOne"
+  folder: "_posts/imageOne"
+  create: true
+  slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+  fields:
+    - { label: "Title", name: "title", widget: "string" }
+    - { label: "Image", name: "image", widget: "image" }
+    - { label: "Description", name: "description", widget: "markdown" }
 
   - name: "imageTwo"
     label: "ImageTwo"
