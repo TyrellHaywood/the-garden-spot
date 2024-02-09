@@ -181,8 +181,10 @@ nav {
   margin-right: auto;
   margin-left: 10%;
   margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 /* -----0o00-0oo0*.o0--SPOTLIGHT-STYLES--Oo.o*0o*----- */
 
 #spotlight {
@@ -385,10 +387,24 @@ footer {
   margin: 0px;
 }
 
-#email {
+.email {
   font-size: 12px;
   margin-top: 8px;
   margin-bottom: 8px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12px;
+}
+
+#email-header {
+  margin-right: 6px;
+}
+
+#email {
+  color: white;
+  text-decoration: underline;
 }
 
 #copyright {

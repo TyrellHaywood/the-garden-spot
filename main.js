@@ -83,10 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return clone;
     };
-
-
-            
-
+    
     // fetch data from API and render homepage content
     fetch(homepageUrl)
     .then(response => {
