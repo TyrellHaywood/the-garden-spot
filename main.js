@@ -74,13 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // function to create a new main spotlight instance
     const createMainSpotlightElement = (imageUrl, description) => {
         // clone the mainSpotlight template
-        const template = document.getElementById('mainSpotlight-template');
+        const template = document.getElementById('main-spotlight-template');
         const clone = document.importNode(template.content, true);
 
-        // populate the cloned mainSpotlight with data
-        clone.querySelector('.homepage-hero-img img').src = imageUrl;
-        clone.querySelector('.homepage-hero-img img').src = imageUrl;
-        clone.querySelector('.event-p').textContent = description;
+        // populate the cloned main spotlight with data
+        clone.querySelector('.main-spotlight-img img').src = imageUrl;
+        clone.querySelector('.main-spotlight-p').textContent = description;
 
         return clone;
     };
@@ -206,6 +205,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 // append the homepage element to the homepage section
                 const homepageSection = document.getElementById('homepage');
                 homepageSection.appendChild(homepageElement);
+            })
+            .catch(error => {
+                console.error('Error fetching or parsing Markdown file:', error);
+            });
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching data for spotlights from GitHub:', error);
+    });
+
+    // fetch data from API and render main spotlight content
+    fetch(mainSpotlightUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // iterate over each item in the data array
+        data.forEach(item => {
+            const markdownContentUrl = item.download_url;
+
+            // perform fetch request for each markdown content URL
+        fetch(markdownContentUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch Markdown file');
+                }
+                return response.text(); // get the response body as text
+            })
+            .then(markdownContent => {
+                // parse the Markdown content to extract metadata and content
+                const metadata = parseMarkdownMetadata(markdownContent);
+                const imageUrl = metadata.image;
+                const description = metadata.description;
+
+                // create a new main spotlight element
+                const mainSpotlightElement = createMainSpotlightElement(imageUrl, description);
+
+                // append the main spotlight element to the homepage section
+                const mainSpotlightSection = document.getElementById('main-spotlight');
+                mainSpotlightSection.appendChild(mainSpotlightElement);
             })
             .catch(error => {
                 console.error('Error fetching or parsing Markdown file:', error);
