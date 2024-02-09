@@ -216,6 +216,13 @@ nav {
   border-top-right-radius: 30px;
 }
 
+.main-spotlight-image {
+  height: 200px;
+  width: 100%;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
 #spotlight-img {
   height: 200px;
   width: 100%;

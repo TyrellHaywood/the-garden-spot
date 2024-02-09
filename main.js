@@ -84,6 +84,97 @@ document.addEventListener('DOMContentLoaded', () => {
         return clone;
     };
 
+
+            
+
+    // fetch data from API and render homepage content
+    fetch(homepageUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // iterate over each item in the data array
+        data.forEach(item => {
+            const markdownContentUrl = item.download_url;
+
+            // perform fetch request for each markdown content URL
+        fetch(markdownContentUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch Markdown file');
+                }
+                return response.text(); // get the response body as text
+            })
+            .then(markdownContent => {
+                // parse the Markdown content to extract metadata and content
+                const metadata = parseMarkdownMetadata(markdownContent);
+                const title = metadata.title;
+                const imageUrl = metadata.image;
+                const description = metadata.description;
+
+                // create a new homepage element
+                const homepageElement = createHomepageElement(title, imageUrl, description);
+
+                // append the homepage element to the homepage section
+                const homepageSection = document.getElementById('homepage');
+                homepageSection.appendChild(homepageElement);
+            })
+            .catch(error => {
+                console.error('Error fetching or parsing Markdown file:', error);
+            });
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching data for spotlights from GitHub:', error);
+    });
+
+    // fetch data from API and render main spotlight content
+    fetch(mainSpotlightUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // iterate over each item in the data array
+        data.forEach(item => {
+            const markdownContentUrl = item.download_url;
+
+            // perform fetch request for each markdown content URL
+        fetch(markdownContentUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch Markdown file');
+                }
+                return response.text(); // get the response body as text
+            })
+            .then(markdownContent => {
+                // parse the Markdown content to extract metadata and content
+                const metadata = parseMarkdownMetadata(markdownContent);
+                const imageUrl = metadata.image;
+                const description = metadata.description;
+
+                // create a new main spotlight element
+                const mainSpotlightElement = createMainSpotlightElement(imageUrl, description);
+
+                // append the main spotlight element to the main spotlight section
+                const mainSpotlightSection = document.getElementById('spotlight');
+                mainSpotlightSection.appendChild(mainSpotlightElement);
+            })
+            .catch(error => {
+                console.error('Error fetching or parsing Markdown file:', error);
+            });
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching data for spotlights from GitHub:', error);
+    });
+
+
     // fetch data from API and render spotlights
     fetch(spotlightsUrl)
       .then(response => {
@@ -169,94 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(error => {
           console.error('Error fetching data for events from GitHub:', error);
       });
-        
-
-    // fetch data from API and render homepage content
-    fetch(homepageUrl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        // iterate over each item in the data array
-        data.forEach(item => {
-            const markdownContentUrl = item.download_url;
-
-            // perform fetch request for each markdown content URL
-        fetch(markdownContentUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch Markdown file');
-                }
-                return response.text(); // get the response body as text
-            })
-            .then(markdownContent => {
-                // parse the Markdown content to extract metadata and content
-                const metadata = parseMarkdownMetadata(markdownContent);
-                const title = metadata.title;
-                const imageUrl = metadata.image;
-                const description = metadata.description;
-
-                // create a new homepage element
-                const homepageElement = createHomepageElement(title, imageUrl, description);
-
-                // append the homepage element to the homepage section
-                const homepageSection = document.getElementById('homepage');
-                homepageSection.appendChild(homepageElement);
-            })
-            .catch(error => {
-                console.error('Error fetching or parsing Markdown file:', error);
-            });
-        });
-    })
-    .catch(error => {
-        console.error('Error fetching data for spotlights from GitHub:', error);
-    });
-
-    // fetch data from API and render main spotlight content
-    fetch(mainSpotlightUrl)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        // iterate over each item in the data array
-        data.forEach(item => {
-            const markdownContentUrl = item.download_url;
-
-            // perform fetch request for each markdown content URL
-        fetch(markdownContentUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch Markdown file');
-                }
-                return response.text(); // get the response body as text
-            })
-            .then(markdownContent => {
-                // parse the Markdown content to extract metadata and content
-                const metadata = parseMarkdownMetadata(markdownContent);
-                const imageUrl = metadata.image;
-                const description = metadata.description;
-
-                // create a new main spotlight element
-                const mainSpotlightElement = createMainSpotlightElement(imageUrl, description);
-
-                // append the main spotlight element to the homepage section
-                const mainSpotlightSection = document.getElementById('main-spotlight');
-                mainSpotlightSection.appendChild(mainSpotlightElement);
-            })
-            .catch(error => {
-                console.error('Error fetching or parsing Markdown file:', error);
-            });
-        });
-    })
-    .catch(error => {
-        console.error('Error fetching data for spotlights from GitHub:', error);
-    });
 
 //--------o0O0oOo.*o0-HANDLES-EVENT-LISTENERS-FOR-PAGES--0o0O.O0o*0O--%O--------
     // nav bar elements
