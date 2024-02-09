@@ -7,8 +7,6 @@ backend:
   branch: main
 media_folder: "images/uploads"
 
-
-
 collections:
   #-----o0oO-0o.0-00.-----HOMEPAGE-COLLECTIONS-Oo0OoO.-O0.o0Ooo--------
   - name: "spotlights"
@@ -51,18 +49,17 @@ collections:
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Description", name: "description", widget: "markdown" }
 
-
   #-----o0oO-0o.0-00.-----ABOUT-US-COLLECTIONS-Oo0OoO.-O0.o0Ooo--------
 
   - name: "imageOne"
-  label: "ImageOne"
-  folder: "_posts/imageOne"
-  create: true
-  slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-  fields:
-    - { label: "Title", name: "title", widget: "string" }
-    - { label: "Image", name: "image", widget: "image" }
-    - { label: "Description", name: "description", widget: "markdown" }
+    label: "ImageOne"
+    folder: "_posts/imageOne"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Description", name: "description", widget: "markdown" }
 
   - name: "imageTwo"
     label: "ImageTwo"
