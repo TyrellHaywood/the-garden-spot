@@ -140,11 +140,10 @@ collections:
               "December",
             ],
         }
-      - { label: "Day", name: "day", widget: "number" }
       - {
-          label: "Year",
-          name: "year",
-          widget: "select",
+          label: "Day",
+          name: "day",
+          widget: "number",
           options:
             [
               1,
@@ -179,5 +178,11 @@ collections:
               30,
               31,
             ],
+        }
+      - {
+          label: "Year",
+          name: "year",
+          widget: "select",
+          options: [2024, 2025, 2026, 2027, 2028],
         }
       - { label: "Body", name: "body", widget: "markdown" }
