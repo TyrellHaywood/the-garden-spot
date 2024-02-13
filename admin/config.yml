@@ -88,4 +88,4 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Image", name: "image", widget: "image" }
-      - { label: "Body", name: "body", widget: "string" }
+      - { label: "Description", name: "description", widget: "markdown" }
