@@ -222,6 +222,12 @@ nav {
   height: 150px;
 }
 
+.team-member-img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
 
 .overview {
   height: 100px;

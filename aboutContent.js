@@ -72,6 +72,19 @@ document.addEventListener('DOMContentLoaded', () => {
         return clone;
     };
 
+     // function to create a new team-member instance
+     const createTeamMemberElement = (imageUrl, description) => {
+        // clone the team-member template
+        const template = document.getElementById('teamMember-template');
+        const clone = document.importNode(template.content, true);
+
+        // populate the cloned team-member with data
+        clone.querySelector('.team-member-img').src = imageUrl;
+        clone.querySelector('.overview-text').textContent = description;
+
+        return clone;
+    };
+
 
 
         /* -----0o00-0oo0*.o0--GET-REQUESTS--Oo.o*0o*----- */
@@ -189,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // create a new about-us element
                         const aboutUsElement = createAboutUsElement(bodyOfText);
-                        
+
                         // append the about-us element to the about-us section
                         const aboutUsSection = document.getElementById('about-us');
                         aboutUsSection.appendChild(aboutUsElement);
@@ -204,6 +217,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
+        // fetch data from API and render teamMember content
+        fetch(teamMemberUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // iterate over each item in the data array
+            data.forEach(item => {
+                const markdownContentUrl = item.download_url;
+    
+                // perform fetch request for each markdown content URL
+                fetch(markdownContentUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to fetch Markdown file');
+                        }
+                        return response.text(); // get the response body as text
+                    })
+                    .then(markdownContent => {
 
+                        // parse body of text first
+                        const bodyOfText = markdownContent.trim().split('---')[2].trim();
+
+                        // parse the Markdown content to extract metadata and content
+                        const metadata = parseMarkdownMetadata(markdownContent);
+                        const imageUrl = metadata.image;
+                        const description = metadata.description;
+    
+                        // create a new teamMember element
+                        const teamMemberElement = createTeamMemberElement(imageUrl, description);
+    
+                        // append the teamMember element to the teamMember section
+                        const teamMemberSection = document.getElementById('team');
+                        teamMemberSection.appendChild(teamMemberElement);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching or parsing Markdown file:', error);
+                    });
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data for teamMember from GitHub:', error);
+        });
 });
 
