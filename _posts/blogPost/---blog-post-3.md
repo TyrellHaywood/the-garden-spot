@@ -1,5 +1,6 @@
 ---
 title: blog post 3
+image: /images/uploads/group-photo.jpg
 month: February
 day: "13"
 year: "2024"
