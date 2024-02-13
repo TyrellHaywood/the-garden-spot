@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const repository = 'TyrellHaywood/the-garden-spot';
     const branch = 'main'; // or 'master', depending on your repository's default branch
 
-    const imageOneUrl = `https://api.github.com/repos/${repository}/contents/_posts/imageOne?ref=${branch}`;
+    const volunteerImgUrl = `https://api.github.com/repos/${repository}/contents/_posts/volunteerImg?ref=${branch}`;
+    const getInvolvedUrl = `https://api.github.com/repos/${repository}/contents/_posts/getInvolved?ref=${branch}`;
     
 
     // this parses .md metadata retrieved from netlify's CMS
@@ -30,6 +31,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* -----0o00-0oo0*.o0--CREATOR-FUNCTIONS--Oo.o*0o*----- */
 
+     // function to create a new volunteerImg instance
+     const createVolunteerImgElement = (imageUrl, description) => {
+        // clone the volunteerImg template
+        const template = document.getElementById('hero-template');
+        const clone = document.importNode(template.content, true);
+
+        // populate the cloned volunteerImg with data
+        clone.querySelector('#hero-image').src = imageUrl;
+        clone.querySelector('.hero-p').textContent = description;
+
+        return clone;
+    };
+
      // function to create a new imageOne instance
      const createImageOneElement = (imageUrl, description) => {
         // clone the imageOne template
@@ -45,8 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         /* -----0o00-0oo0*.o0--GET-REQUESTS--Oo.o*0o*----- */
 
-        // fetch data from API and render imageOne + text
-        fetch(imageOneUrl)
+        // fetch data from API and render volunteerImg + text
+        fetch(volunteerImgUrl)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -72,12 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         const imageUrl = metadata.image;
                         const description = metadata.description;
     
-                        // create a new imageOne element
-                        const imageOneElement = createImageOneElement(imageUrl, description);
+                        // create a new volunteerImg element
+                        const volunteerImgElement = createVolunteerImgElement(imageUrl, description);
     
-                        // append the imageOne element to the imageOne section
-                        const imageOneSection = document.getElementById('imageOne');
-                        imageOneSection.appendChild(imageOneElement);
+                        // append the volunteerImg element to the volunteerImg section
+                        const volunteerImgSection = document.getElementById('hero');
+                        volunteerImgSection.appendChild(volunteerImgElement);
                     })
                     .catch(error => {
                         console.error('Error fetching or parsing Markdown file:', error);
@@ -85,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         })
         .catch(error => {
-            console.error('Error fetching data for imageOne from GitHub:', error);
+            console.error('Error fetching data for volunteerImg from GitHub:', error);
         });
 
 });
