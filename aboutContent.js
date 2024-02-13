@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return clone;
     };
+
      // function to create a new imageTwo instance
      const createImageTwoElement = (imageUrl, description) => {
         // clone the imageTwo template
@@ -55,6 +56,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // populate the cloned imageTwo with data
         clone.querySelector('#imageTwo-img').src = imageUrl;
         clone.querySelector('#imageTwo-p').textContent = description;
+
+        return clone;
+    };
+
+     // function to create a new about-us instance
+     const createAboutUsElement = (description) => {
+        // clone the about-us template
+        const template = document.getElementById('about-us-template');
+        const clone = document.importNode(template.content, true);
+
+        // populate the cloned about-us with data
+        clone.querySelector('#about-us-p').textContent = description;
 
         return clone;
     };
@@ -146,7 +159,49 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         })
         .catch(error => {
-            console.error('Error fetching data for imageOne from GitHub:', error);
+            console.error('Error fetching data for imageTwo from GitHub:', error);
+        });
+
+        // fetch data from API and render about-us
+        fetch(aboutUsUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // iterate over each item in the data array
+            data.forEach(item => {
+                const markdownContentUrl = item.download_url;
+  
+                // perform fetch request for each markdown content URL
+                fetch(markdownContentUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                          throw new Error('Failed to fetch Markdown file');
+                        }
+                        return response.text(); // get the response body as text
+                    })
+                    .then(markdownContent => {
+                      // parse the Markdown content to extract metadata and content
+                      const metadata = parseMarkdownMetadata(markdownContent);
+                      const description = metadata.description;
+  
+                      // create a new about-us element
+                      const aboutUsElement = createAboutUsElement(description);
+  
+                      // append the about-us element to the about-us section
+                      const aboutUsSection = document.getElementById('about-us');
+                      aboutUsSection.appendChild(aboutUsElement);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching or parsing Markdown file:', error);
+                    });
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data for about us from GitHub:', error);
         });
 
 
