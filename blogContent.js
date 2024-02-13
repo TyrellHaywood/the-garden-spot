@@ -39,23 +39,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* -----0o00-0oo0*.o0--CREATOR-FUNCTIONS--Oo.o*0o*----- */
 
-    // function to create a new blogPost element
-    const createBlogPostElement = (title, imageUrl, month, day, year, allDates) => {
-        // clone the appropriate template based on whether the post is the most recent
-        const templateId = isMostRecent(`${month} ${day} ${year}`, allDates) ? 'mostRecent-post' : 'recent-post';
-        const template = document.getElementById(templateId);
+    // function to create a new most recent blogPost element
+    const createMostRecentBlogPostElement = (title, imageUrl, month, day, year) => {
+        // clone the most recent post template
+        const template = document.getElementById('mostRecent-post');
         const clone = document.importNode(template.content, true);
-    
+
         // populate the cloned element with data
-        clone.querySelector('.post-image').src = imageUrl;
-        clone.querySelector('.post-p').textContent = title;
-    
+        clone.querySelector('#main-image').src = imageUrl;
+        clone.querySelector('#most-recent-p').textContent = title;
+
         return clone;
     };
 
-        /* -----0o00-0oo0*.o0--GET-REQUESTS--Oo.o*0o*----- */
+    // function to create a new recent blogPost element
+    const createRecentBlogPostElement = (title, imageUrl, month, day, year) => {
+        // clone the recent post template
+        const template = document.getElementById('recent-post');
+        const clone = document.importNode(template.content, true);
 
-        // fetch data from API and render volunteerImg + text
+        // populate the cloned element with data
+        clone.querySelector('.post-image').src = imageUrl;
+        clone.querySelector('.post-p').textContent = title;
+
+        return clone;
+    };
+
+    /* -----0o00-0oo0*.o0--GET-REQUESTS--Oo.o*0o*----- */
+
+    // fetch data from API and render blog post content
     // fetch data from API and render blog post content
     fetch(blogPostUrl)
     .then(response => {
@@ -86,12 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // iterate over each item in the data array
             data.forEach((item, index) => {
                 const markdownContentUrl = item.download_url;
-  
+
                 // perform fetch request for each markdown content URL
                 fetch(markdownContentUrl)
                     .then(response => {
                         if (!response.ok) {
-                          throw new Error('Failed to fetch Markdown file');
+                        throw new Error('Failed to fetch Markdown file');
                         }
                         return response.text(); // get the response body as text
                     })
@@ -100,12 +112,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         const metadata = parseMarkdownMetadata(markdownContent);
                         const imageUrl = metadata.image;
                         const description = metadata.description;
-    
-                        // create a new blogPost element
-                        const blogPostElement = createBlogPostElement(metadata.title, imageUrl, metadata.month, metadata.day, metadata.year, dates);
-    
+
+                        // create a new blogPost element based on whether it is the most recent or not
+                        const blogPostElement = isMostRecent(`${metadata.month} ${metadata.day} ${metadata.year}`, dates) ?
+                            createMostRecentBlogPostElement(metadata.title, imageUrl, metadata.month, metadata.day, metadata.year) :
+                            createRecentBlogPostElement(metadata.title, imageUrl, metadata.month, metadata.day, metadata.year);
+
                         // append the blogPost element to the appropriate section
-                        const postSection = isMostRecent(`${metadata.month} ${metadata.day} ${metadata.year}`, dates) ? document.getElementById('most-recent-post') : document.getElementById('recent-posts');
+                        const postSection = isMostRecent(`${metadata.month} ${metadata.day} ${metadata.year}`, dates) ?
+                            document.getElementById('recent-posts') :
+                            document.getElementById('recent-posts');
                         postSection.appendChild(blogPostElement);
                     })
                     .catch(error => {
