@@ -129,12 +129,26 @@ nav {
   margin-top: 100px;
 }
 
+#imageOne-img {
+  width: 100%;
+  height: 300px;
+  background-color: #d9d9d9;
+  border-radius: 30px;
+}
+
 #imageTwo {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 25px;
+}
+
+#imageTwo-img {
+  width: 100%;
+  height: 300px;
+  background-color: #d9d9d9;
+  border-radius: 30px;
 }
 
 .hero-img {
