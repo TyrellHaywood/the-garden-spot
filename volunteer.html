@@ -12,6 +12,7 @@
 
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="main.js" defer></script>
+    <script src="volunteerContent.js" defer></script>
 </head>
 <body>
     <main>
@@ -34,7 +35,7 @@
         </header> 
         <section id="hero">
             <!-- hero template -->
-            <template>
+            <template id="hero-template">
                 <div class="hero-img">
                     <img id="hero-image" src="" alt="">
                 </div>
@@ -44,10 +45,11 @@
         </section>
         <section id="volunteer">
             <h1 id="volunteer-h1">Get Involved</h1>
-            <p id="volunteer-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            <!-- volunteer text-template -->
+            <template id="volunteerText=template">
+                <p id="volunteer-text"></p> 
+            </template>
+
             <button id="sign-up">Sign Up</button>
         </section>
         <form id="sign-up-form">
