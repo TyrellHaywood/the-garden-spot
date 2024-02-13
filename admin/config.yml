@@ -110,3 +110,36 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Description", name: "description", widget: "markdown" }
+
+  #-----o0oO-0o.0-00.-----BLOG-COLLECTIONS-Oo0OoO.-O0.o0Ooo--------
+
+  - name: "getInvolved"
+    label: "GetInvolved"
+    folder: "_posts/getInvolved"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - {
+          label: "Month",
+          name: "month",
+          widget: "select",
+          options:
+            [
+              "January",
+              "February",
+              "March",
+              "April",
+              "May",
+              "June",
+              "July",
+              "August",
+              "September",
+              "October",
+              "November",
+              "December",
+            ],
+        }
+      - { label: "Day", name: "day", widget: "number" }
+      - { label: "Body", name: "body", widget: "markdown" }
