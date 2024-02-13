@@ -73,14 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
      // function to create a new team-member instance
-     const createTeamMemberElement = (imageUrl, description) => {
+     const createTeamMemberElement = (title, imageUrl, description) => {
         // clone the team-member template
         const template = document.getElementById('teamMember-template');
         const clone = document.importNode(template.content, true);
 
         // populate the cloned team-member with data
         clone.querySelector('.team-member-img').src = imageUrl;
-        clone.querySelector('.overview-text').textContent = description;
+        clone.querySelector('.name-text').textContent = title;
+        clone.querySelector('.bg-description').textContent = description;
 
         return clone;
     };
@@ -245,11 +246,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // parse the Markdown content to extract metadata and content
                         const metadata = parseMarkdownMetadata(markdownContent);
+                        const title = metadata.title;
                         const imageUrl = metadata.image;
                         const description = metadata.description;
     
                         // create a new teamMember element
-                        const teamMemberElement = createTeamMemberElement(imageUrl, description);
+                        const teamMemberElement = createTeamMemberElement(title, imageUrl, description);
     
                         // append the teamMember element to the teamMember section
                         const teamMemberSection = document.getElementById('team');

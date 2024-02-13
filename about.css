@@ -229,12 +229,12 @@ nav {
   border-top-right-radius: 30px;
 }
 
-.overview {
+.name {
   height: 100px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  font-size: 12px;
+  font-size: 16px;
   background-color: white;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
@@ -243,14 +243,16 @@ nav {
   justify-content: center;
 }
 
-.overview-text {
+.name-text {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
-
-
+.bg-description {
+  display: none;
+}
 
 
  /* -----0o00-0oo0*.o0--FOOTER-STYLES--Oo.o*0o*----- */
