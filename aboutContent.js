@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
      // function to create a new about-us instance
      const createAboutUsElement = (description) => {
         // clone the about-us template
-        const template = document.getElementById('about-us-template');
+        const template = document.getElementById('aboutUs-template');
         const clone = document.importNode(template.content, true);
 
         // populate the cloned about-us with data
