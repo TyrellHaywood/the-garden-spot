@@ -44,15 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return clone;
     };
 
-     // function to create a new imageOne instance
-     const createImageOneElement = (imageUrl, description) => {
-        // clone the imageOne template
-        const template = document.getElementById('imageOne-template');
+     // function to create a new getInvolved instance
+     const createGetInvolvedElement = (description) => {
+        // clone the getInvolved template
+        const template = document.getElementById('volunteerText-template');
         const clone = document.importNode(template.content, true);
 
-        // // populate the cloned imageOne with data
-        // clone.querySelector('#imageOne-img').src = imageUrl;
-        // clone.querySelector('#imageOne-p').textContent = description;
+        // populate the cloned getInvolved with data
+        clone.querySelector('#volunteer-text').textContent = description;
 
         return clone;
     };
@@ -100,6 +99,48 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error('Error fetching data for volunteerImg from GitHub:', error);
+        });
+
+        // fetch data from API and render getInvolved text
+        fetch(getInvolvedUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // iterate over each item in the data array
+            data.forEach(item => {
+                const markdownContentUrl = item.download_url;
+  
+                // perform fetch request for each markdown content URL
+                fetch(markdownContentUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                          throw new Error('Failed to fetch Markdown file');
+                        }
+                        return response.text(); // get the response body as text
+                    })
+                    .then(markdownContent => {
+                        // parse the Markdown content to extract metadata and content
+                        const metadata = parseMarkdownMetadata(markdownContent);
+                        const description = metadata.description;
+    
+                        // create a new getInvolved element
+                        const getInvolvedElement = createGetInvolvedElement(description);
+    
+                        // append the getInvolved element to the getInvolved section
+                        const getInvolvedSection = document.getElementById('volunteer');
+                        getInvolvedSection.appendChild(getInvolvedElement);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching or parsing Markdown file:', error);
+                    });
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data for getInvolved from GitHub:', error);
         });
 
 });

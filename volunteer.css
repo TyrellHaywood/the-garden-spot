@@ -128,14 +128,6 @@ header {
     margin-top: 100px;
   }
   
-  #hero-2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 25px;
-  }
-  
   .hero-img {
     width: 90%;
     height: 300px;
@@ -143,6 +135,12 @@ header {
     border-radius: 30px;
   }
   
+  #hero-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+  }
+
   .hero-p {
     width: 90%;
     margin-top: 8px;
