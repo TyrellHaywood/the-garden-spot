@@ -98,17 +98,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         return response.text(); // get the response body as text
                     })
                     .then(markdownContent => {
-                      // parse the Markdown content to extract metadata and content
-                      const metadata = parseMarkdownMetadata(markdownContent);
-                      const imageUrl = metadata.image;
-                      const description = metadata.description;
-  
-                      // create a new imageOne element
-                      const imageOneElement = createImageOneElement(imageUrl, description);
-  
-                      // append the imageOne element to the imageOne section
-                      const imageOneSection = document.getElementById('imageOne');
-                      imageOneSection.appendChild(imageOneElement);
+                        // parse the Markdown content to extract metadata and content
+                        const metadata = parseMarkdownMetadata(markdownContent);
+                        const imageUrl = metadata.image;
+                        const description = metadata.description;
+    
+                        // create a new imageOne element
+                        const imageOneElement = createImageOneElement(imageUrl, description);
+    
+                        // append the imageOne element to the imageOne section
+                        const imageOneSection = document.getElementById('imageOne');
+                        imageOneSection.appendChild(imageOneElement);
                     })
                     .catch(error => {
                         console.error('Error fetching or parsing Markdown file:', error);
@@ -141,17 +141,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         return response.text(); // get the response body as text
                     })
                     .then(markdownContent => {
-                      // parse the Markdown content to extract metadata and content
-                      const metadata = parseMarkdownMetadata(markdownContent);
-                      const imageUrl = metadata.image;
-                      const description = metadata.description;
-  
-                      // create a new imageTwo element
-                      const imageTwoElement = createImageTwoElement(imageUrl, description);
-  
-                      // append the imageTwo element to the imageTwo section
-                      const imageTwoSection = document.getElementById('imageTwo');
-                      imageTwoSection.appendChild(imageTwoElement);
+                        // parse the Markdown content to extract metadata and content
+                        const metadata = parseMarkdownMetadata(markdownContent);
+                        const imageUrl = metadata.image;
+                        const description = metadata.description;
+    
+                        // create a new imageTwo element
+                        const imageTwoElement = createImageTwoElement(imageUrl, description);
+    
+                        // append the imageTwo element to the imageTwo section
+                        const imageTwoSection = document.getElementById('imageTwo');
+                        imageTwoSection.appendChild(imageTwoElement);
                     })
                     .catch(error => {
                         console.error('Error fetching or parsing Markdown file:', error);
@@ -184,16 +184,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         return response.text(); // get the response body as text
                     })
                     .then(markdownContent => {
-                      // parse the Markdown content to extract metadata and content
-                      const metadata = parseMarkdownMetadata(markdownContent);
-                      const description = metadata.description;
-  
-                      // create a new about-us element
-                      const aboutUsElement = createAboutUsElement(description);
-  
-                      // append the about-us element to the about-us section
-                      const aboutUsSection = document.getElementById('about-us');
-                      aboutUsSection.appendChild(aboutUsElement);
+                        // parse body of text instead, isnt accessed the same as "description"
+                        const bodyOfText = markdownContent.trim().split('---')[2].trim();
+
+                        // create a new about-us element
+                        const aboutUsElement = createAboutUsElement(bodyOfText);
+                        
+                        // append the about-us element to the about-us section
+                        const aboutUsSection = document.getElementById('about-us');
+                        aboutUsSection.appendChild(aboutUsElement);
                     })
                     .catch(error => {
                         console.error('Error fetching or parsing Markdown file:', error);
