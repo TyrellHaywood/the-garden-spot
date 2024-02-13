@@ -121,7 +121,7 @@ nav {
 }
 
 /* -----0o00-0oo0*.o0--HERO-STYLES--Oo.o*0o*----- */
-#hero {
+#imageOne {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -129,7 +129,7 @@ nav {
   margin-top: 100px;
 }
 
-#hero-2 {
+#imageTwo {
   display: flex;
   flex-direction: column;
   justify-content: center;

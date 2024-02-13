@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
           data.forEach(item => {
               const markdownContentUrl = item.download_url;
 
-              // ierform fetch request for each markdown content URL
+              // perform fetch request for each markdown content URL
             fetch(markdownContentUrl)
                 .then(response => {
                     if (!response.ok) {
