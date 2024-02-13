@@ -113,9 +113,9 @@ collections:
 
   #-----o0oO-0o.0-00.-----BLOG-COLLECTIONS-Oo0OoO.-O0.o0Ooo--------
 
-  - name: "getInvolved"
-    label: "GetInvolved"
-    folder: "_posts/getInvolved"
+  - name: "blogPost"
+    label: "BlogPost"
+    folder: "_posts/blogPost"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
