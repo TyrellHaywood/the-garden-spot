@@ -117,7 +117,7 @@ collections:
     label: "BlogPost"
     folder: "_posts/blogPost"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{field.year}}-{{field.month}}-{{field.day}}-{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - {
@@ -143,7 +143,7 @@ collections:
       - {
           label: "Day",
           name: "day",
-          widget: "number",
+          widget: "select",
           options:
             [
               1,
