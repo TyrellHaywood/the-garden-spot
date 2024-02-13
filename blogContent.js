@@ -27,36 +27,64 @@ document.addEventListener('DOMContentLoaded', () => {
         return metadata;
     };
 
+    // function to determine if a post is the most recent based on its date
+    const isMostRecent = (postDate, allDates) => {
+        const sortedDates = allDates.sort((a, b) => {
+            const [aMonth, aDay, aYear] = a.split(' ');
+            const [bMonth, bDay, bYear] = b.split(' ');
+            return new Date(bYear, bMonth, bDay) - new Date(aYear, aMonth, aDay);
+        });
+        return postDate === sortedDates[0];
+    };
+
     /* -----0o00-0oo0*.o0--CREATOR-FUNCTIONS--Oo.o*0o*----- */
 
-     // function to create a new volunteerImg instance
-     const createVolunteerImgElement = (title, imageUrl, month, day) => {
-        // clone the volunteerImg template
-        const template = document.getElementById('hero-template');
+    // function to create a new blogPost element
+    const createBlogPostElement = (title, imageUrl, month, day, year, allDates) => {
+        // clone the appropriate template based on whether the post is the most recent
+        const templateId = isMostRecent(`${month} ${day} ${year}`, allDates) ? 'mostRecent-post' : 'recent-post';
+        const template = document.getElementById(templateId);
         const clone = document.importNode(template.content, true);
-
-        // populate the cloned volunteerImg with data
-        clone.querySelector('#hero-image').src = imageUrl;
-        clone.querySelector('#hero-image').src = title;
-        clone.querySelector('#hero-image').src = month;
-        clone.querySelector('#hero-image').src = day;
-
+    
+        // populate the cloned element with data
+        clone.querySelector('.post-image').src = imageUrl;
+        clone.querySelector('.post-p').textContent = title;
+    
         return clone;
     };
 
         /* -----0o00-0oo0*.o0--GET-REQUESTS--Oo.o*0o*----- */
 
         // fetch data from API and render volunteerImg + text
-        fetch(blogPostUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
+    // fetch data from API and render blog post content
+    fetch(blogPostUrl)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // extract dates of all posts
+        const allDates = data.map(item => {
+            const markdownContentUrl = item.download_url;
+            return fetch(markdownContentUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch Markdown file');
+                    }
+                    return response.text(); // get the response body as text
+                })
+                .then(markdownContent => {
+                    const metadata = parseMarkdownMetadata(markdownContent);
+                    return `${metadata.month} ${metadata.day} ${metadata.year}`;
+                });
+        });
+
+        // once all dates are fetched, continue with creating and rendering blog post elements
+        Promise.all(allDates).then(dates => {
             // iterate over each item in the data array
-            data.forEach(item => {
+            data.forEach((item, index) => {
                 const markdownContentUrl = item.download_url;
   
                 // perform fetch request for each markdown content URL
@@ -73,21 +101,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         const imageUrl = metadata.image;
                         const description = metadata.description;
     
-                        // create a new volunteerImg element
-                        const volunteerImgElement = createVolunteerImgElement(imageUrl, description);
+                        // create a new blogPost element
+                        const blogPostElement = createBlogPostElement(metadata.title, imageUrl, metadata.month, metadata.day, metadata.year, dates);
     
-                        // append the volunteerImg element to the volunteerImg section
-                        const volunteerImgSection = document.getElementById('hero');
-                        volunteerImgSection.appendChild(volunteerImgElement);
+                        // append the blogPost element to the appropriate section
+                        const postSection = isMostRecent(`${metadata.month} ${metadata.day} ${metadata.year}`, dates) ? document.getElementById('most-recent-post') : document.getElementById('recent-posts');
+                        postSection.appendChild(blogPostElement);
                     })
                     .catch(error => {
                         console.error('Error fetching or parsing Markdown file:', error);
                     });
             });
-        })
-        .catch(error => {
-            console.error('Error fetching data for volunteerImg from GitHub:', error);
         });
+    })
+    .catch(error => {
+        console.error('Error fetching data for blog posts from GitHub:', error);
+    });
 
 });
-

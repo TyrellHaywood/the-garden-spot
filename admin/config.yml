@@ -120,6 +120,7 @@ collections:
     slug: "{{field.year}}-{{field.month}}-{{field.day}}-{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - { label: "Image", name: "image", widget: "image" }
       - {
           label: "Month",
           name: "month",
