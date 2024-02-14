@@ -12,7 +12,7 @@
 
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="main.js" defer></script>
-    <script src="blogContent.js" defer></script>
+    <script src="blogCollectionContent.js" defer></script>
 </head>
 <body>
     <main>
@@ -37,18 +37,20 @@
             <div id="section-header">
                 <h1 id="section-header-h1">All Posts</h1>
             </div>
-            <!-- post template -->
-            <template id="post-template">
-                <div class="post">
-                    <div class="post-img">
-                        <img class="post-image" src="" alt="">
+            <div id="all-posts-container">
+                <!-- post template -->
+                <template id="post-template">
+                    <div class="post">
+                        <div class="post-img">
+                            <img class="post-image" src="" alt="">
+                        </div>
+                        <div class="post-text">
+                            <p class="post-p"></p>
+                        </div>
                     </div>
-                    <div class="post-text">
-                        <p class="post-p"></p>
-                    </div>
-                </div>
-            </template>
+                </template>
 
+            </div>
         </section>
     </main>
     <footer>

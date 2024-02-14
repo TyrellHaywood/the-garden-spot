@@ -125,8 +125,7 @@ nav {
 
 #all-posts {
     font-family: "Noto Sans";
-    display: flex;
-    flex-wrap: wrap;
+
 }
 
 #section-header {
@@ -146,15 +145,23 @@ nav {
 
 /* -----0o00-0oo0*.o0--POST-STYLES--Oo.o*0o*----- */
 
-.post {
+#all-posts-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.post { 
     width: 45%;
     max-width: 162.5px;
     height: 143px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-left: 15px;
     margin-top: 15px;
-    display: flex;
-    flex-direction: column;
     border-radius: 15px;
 }
 
