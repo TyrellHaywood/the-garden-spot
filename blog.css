@@ -125,8 +125,6 @@ nav {
 
 #recent-posts {
     font-family: "Noto Sans";
-    display: flex;
-    flex-wrap: wrap;
 }
 
 #section-header {
@@ -166,10 +164,27 @@ nav {
     margin-left: 4px;
 }
 
+/* -----0o00-0oo0*.o0--ALL-POSTS-CONTAINERS-STYLES--Oo.o*0o*----- */
+
+#all-post-containers {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 /* -----0o00-0oo0*.o0--MOST-RECENT-STYLES--Oo.o*0o*----- */
 
-#most-recent-post {
+#mostRecent-post-container {
     width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#most-recent-post {
+    width: 100%;
     max-width: 340px;
     height: 300px;
     margin-right: auto;
@@ -218,12 +233,22 @@ nav {
 
 /* -----0o00-0oo0*.o0--POST-STYLES--Oo.o*0o*----- */
 
+#recent-post-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .recent-post {
     width: 45%;
     max-width: 162.5px;
     height: 143px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-left: 15px;
     margin-top: 15px;
     display: flex;
     flex-direction: column;

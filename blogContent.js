@@ -120,8 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // append the blogPost element to the appropriate section
                         const postSection = isMostRecent(`${metadata.month} ${metadata.day} ${metadata.year}`, dates) ?
-                            document.getElementById('recent-posts') :
-                            document.getElementById('recent-posts');
+                            document.getElementById('mostRecent-post-container') :
+                            document.getElementById('recent-post-container');
                         postSection.appendChild(blogPostElement);
                     })
                     .catch(error => {
