@@ -110,33 +110,43 @@ a {
   font-size: 40px;
   font-family: "Noto Sans";
   margin-right: auto;
+  /* margin-bottom: 35px; */
+}
+
+#team-members {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 35px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .team-member {
-  height: 250px;
-  width: 40%;
-  max-width: 160px;
-  background-color: #d9d9d9;
-  border-radius: 30px;
-  margin-right: 7.5px;
-  margin-left: 7.5px;
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 35px;
+  margin-top: 35px;
+  max-width: 275px;
 }
 
 .headshot {
-  height: 150px;
+  height: 275px; /* fix later!! */
+  width: 100%;
+  max-height: 275px;
+  max-width: 275px;
+  background-color: #d9d9d9;
+  border-radius: 100px;
 }
 
 .team-member-img {
   width: 100%;
   height: 100%;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+  border-radius: 100px;
 }
 
 .name {
-  height: 100px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -153,7 +163,18 @@ a {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 15px;
   text-align: center;
+  font-size: 24px;
+}
+
+.role {
+  color: #a9a9a9;
+}
+
+.email-address {
+  color: var(--green);
+  
 }
 
 .bg-description {

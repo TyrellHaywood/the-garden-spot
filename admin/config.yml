@@ -86,11 +86,13 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Name", name: "name", widget: "string" }
       - { label: "Image", name: "image", widget: "image" }
-      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Email", name: "email", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
 
-  #-----o0oO-0o.0-00.-----ABOUT-US-COLLECTIONS-Oo0OoO.-O0.o0Ooo--------
+  #-----o0oO-0o.0-00.-----VOLUNTEER-COLLECTIONS-Oo0OoO.-O0.o0Ooo--------
 
   - name: "volunteerImg"
     label: "VolunteerImg"

@@ -73,14 +73,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
      // function to create a new team-member instance
-     const createTeamMemberElement = (title, imageUrl, description) => {
+     const createTeamMemberElement = (name, imageUrl, role, email, description) => {
         // clone the team-member template
-        const template = document.getElementById('teamMember-template');
+        const template = document.getElementById('team-members');
         const clone = document.importNode(template.content, true);
 
         // populate the cloned team-member with data
+        clone.querySelector('.name-text').textContent = name;
         clone.querySelector('.team-member-img').src = imageUrl;
-        clone.querySelector('.name-text').textContent = title;
+        clone.querySelector('.role').src = role;
+        clone.querySelector('.email-address').textContent = email;
         clone.querySelector('.bg-description').textContent = description;
 
         return clone;
@@ -246,12 +248,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // parse the Markdown content to extract metadata and content
                         const metadata = parseMarkdownMetadata(markdownContent);
-                        const title = metadata.title;
+                        const name = metadata.name;
                         const imageUrl = metadata.image;
+                        const role = metadata.role;
+                        const email = metadata.email;
                         const description = metadata.description;
     
                         // create a new teamMember element
-                        const teamMemberElement = createTeamMemberElement(title, imageUrl, description);
+                        const teamMemberElement = createTeamMemberElement(name, imageUrl, email, description);
     
                         // append the teamMember element to the teamMember section
                         const teamMemberSection = document.getElementById('team');
