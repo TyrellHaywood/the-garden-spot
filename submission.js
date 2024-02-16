@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitButton = document.getElementById("submit");
 
     // event listeners
-    const webURL = "https://script.google.com/macros/s/AKfycbwpQsrVI29IvqprZOxPpWK4sNxv2s94rahByLQqeIwk5Hfksnme52Mm-J6Jhs0G5eftUA/exec"
+    const webURL = '/api'; // proxy server url
     submitButton.addEventListener("click", (e) => {
         e.preventDefault();
         let formData = {
