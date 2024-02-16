@@ -14,6 +14,7 @@
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="main.js" defer></script>
     <script src="volunteerContent.js" defer></script>
+    <script src="submission.js" defer></script>
 </head>
 <body>
     <main>
@@ -64,13 +65,13 @@
                 </span>
             </button>
             <label class="form-label" for="fname">First Name</label>
-            <input class="form-input" type="text" name="fname" id="fname">
+            <input class="form-input" type="text" name="fname" id="fname" required>
 
             <label class="form-label" for="lname">Last Name</label>
-            <input class="form-input" type="text" name="lname" id="lname">
+            <input class="form-input" type="text" name="lname" id="lname" required>
 
             <label class="form-label" for="email">Email</label>
-            <input class="form-input" type="email" name="email" id="email">
+            <input class="form-input" type="email" name="email" id="email-input" required>
 
             <input type="submit" name="submit" id="submit">
         </form>
