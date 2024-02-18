@@ -18,6 +18,10 @@ body {
     margin-top: auto;
 }
 
+main {
+    min-height: 60vh;
+  }
+
 a {
 text-decoration: none;
 }

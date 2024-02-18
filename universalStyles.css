@@ -19,7 +19,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
-
 }
 
 a {
@@ -178,6 +177,14 @@ footer {
 .social-button {
     width: 50px;
     height: 50px;
-    background-color: #d9d9d9;
+    /* background-color: #d9d9d9; */
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-button i {
+  color: white;
+  font-size: 40px;
 }
