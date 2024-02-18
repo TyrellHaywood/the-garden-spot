@@ -4,11 +4,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const lastName = document.getElementById("lname")
     const email = document.getElementById("email-input")
     const submitButton = document.getElementById("submit");
+    const signUpForm = document.getElementById('sign-up-form');
 
     // event listeners
     const webURL = 'https://script.google.com/macros/s/AKfycbwnnXLPii6tPuTZuQ3R4ZXSiLmFZN9bWKEj0_guO-h9AOif9Rbmb0K_s5moeKC0o-CtrQ/exec'; 
     submitButton.addEventListener("click", (e) => {
         e.preventDefault();
+        alert("Form Submitted!");
+        signUpForm.classList.remove('opened');
+
+        // check if required fields are empty
+        if (firstName.value.trim() === '' || lastName.value.trim() === '' || email.value.trim() === '') {
+            alert("Please fill out all required fields.");
+            return; // exit the function if any required field is empty
+        }
         let formData = {
             firstName: firstName.value,
             lastName: lastName.value,
@@ -19,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             body: JSON.stringify(formData)
         }).then((response) => {
             console.log(response);
+            
             if (response.ok) {
                 console.log("Form Submitted!");
             } else {

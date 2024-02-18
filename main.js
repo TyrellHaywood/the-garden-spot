@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // sign up form event listener fxn
     signUpButton.addEventListener('click', () => {
       signUpForm.classList.toggle('opened');
-      signUpButton.classList.toggle('hidden');
     });
 
     expandLess.addEventListener('click', () => {

@@ -58,7 +58,6 @@ body {
   /* -----0o00-0oo0*.o0--VOLUNTEER-STYLES--Oo.o*0o*----- */
 #volunteer {
   margin-top: 35px;
-  margin-bottom: 35px;
   font-family: "Noto Sans";
   position: relative;
   z-index: 1;
@@ -89,6 +88,7 @@ body {
   font-weight: 700;
   margin-top: 35px;
   margin-left: 5%;
+  margin-bottom: 35px;
 }
 
 #sign-up.hidden {
@@ -151,6 +151,11 @@ body {
   margin-left: 5%;
 }
 
-#email {
+.required {
   color: red;
+}
+
+.form-submitted {
+  color: green;
+  font-weight: bold;
 }
