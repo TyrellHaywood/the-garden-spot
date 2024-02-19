@@ -26,15 +26,18 @@ a {
 /* -----0o00-0oo0*.o0--HOMEPAGE-STYLES--Oo.o*0o*----- */
 #homepage-hero-img {
   width: 100%;
-  height: 300px;
+  height: auto;
+  min-height: 300px;
+  margin-left: auto;
+  margin-right: auto;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  background-color: #d9d9d9;
   margin-top: 75px;
 }
 
 #hero-image {
-  height: 300px;
+  height: auto;
+  min-height: 300px;
   width: 100%;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
@@ -42,6 +45,7 @@ a {
 
 #info-container {
   width: 90%;
+  max-width: 550px;
   height: 400px;
   background-color: white;
   border-radius: 30px;
@@ -56,7 +60,7 @@ a {
 }
 
 #info-container.menu-opened {
-  margin-top: 50px; /* Adjust as needed */
+  margin-top: 50px;
   transition: .1s;
 }
 
@@ -99,17 +103,19 @@ a {
 }
 
 #spotlight-h1 {
-    font-size: 40px;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: "Noto Sans";
-    font-weight: 700;
+  font-size: 40px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Noto Sans";
+  font-weight: 700;
 }
 
 #main-spotlight {
   width: 90%;
-  height: 300px;
+  max-width: 550px;
+  height: auto;
+  max-height: 345px;
   margin-right: auto;
   margin-left: auto;
   margin-top: 35px;
@@ -119,26 +125,29 @@ a {
 }
 
 #main-spotlight-img {
-  height: 200px;
+  height: auto;
+  max-height: 230px;
   background-color: #d9d9d9;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-spotlight-image {
-  height: 200px;
+  height: 100%;
   width: 100%;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-}
-
-#spotlight-img {
-  height: 200px;
-  width: 100%;
+  object-fit: cover;
 }
 
 #spotlight-text {
-  height: 100px;
+  height: auto;
+  min-height: 100px;
+  max-height: 115px;
   width: 100%;
   background-color: white;
   border-bottom-left-radius: 30px;
@@ -157,6 +166,7 @@ a {
 
 .spotlight {
   width: 90%;
+  max-width: 550px;
   height: 65px;
   margin-left: auto;
   margin-right: auto;
@@ -167,15 +177,20 @@ a {
 
 .spotlight-img {
   width: 25%;
-  height: 100%;
+  height: auto;
+  max-height: 75px;
   background-color: #d9d9d9;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .spotlight-img-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: #d9d9d9;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -212,6 +227,7 @@ a {
 
 .event {
   width: 90%;
+  max-width: 550px;
   height: 150px;
   margin-left: auto;
   margin-right: auto;
@@ -222,14 +238,19 @@ a {
 
 .event-img {
   width: 45%;
+  height: auto;
   background-color: #d9d9d9;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .event-img-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
@@ -251,6 +272,10 @@ a {
 
 /* -----0o00-0oo0*.o0--CONTACT-STYLES--Oo.o*0o*----- */
 #contact {
+  width: 100%;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 50px;
   margin-bottom: 50px;
   display: flex;
@@ -267,4 +292,8 @@ a {
   font-family: "Rainball";
   font-size: 84px;
   color: var(--green);
+}
+
+@media screen and (min-width: 600px) {
+  
 }
