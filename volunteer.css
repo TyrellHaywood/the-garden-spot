@@ -37,19 +37,23 @@ body {
   
 .hero-img {
   width: 90%;
-  height: 300px;
+  max-width: 550px;
+  height: auto;
   background-color: #d9d9d9;
   border-radius: 30px;
 }
   
 #hero-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   border-radius: 30px;
 }
 
 .hero-p {
   width: 90%;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 8px;
   font-family: "Noto Sans";
   font-size: 12px;
@@ -57,6 +61,10 @@ body {
 
   /* -----0o00-0oo0*.o0--VOLUNTEER-STYLES--Oo.o*0o*----- */
 #volunteer {
+  width: 90%;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 35px;
   font-family: "Noto Sans";
   position: relative;
@@ -75,6 +83,13 @@ body {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.sign-up-container {
+  width: 90%;
+  max-width: 550px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #sign-up {
