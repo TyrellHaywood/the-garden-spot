@@ -86,6 +86,7 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
+      - { label: "Title", name: "title", widget: "string" }
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Role", name: "role", widget: "string" }
