@@ -75,13 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
      // function to create a new team-member instance
      const createTeamMemberElement = (name, imageUrl, role, email, description) => {
         // clone the team-member template
-        const template = document.getElementById('team-members');
+        const template = document.getElementById('teamMember-template');
         const clone = document.importNode(template.content, true);
 
         // populate the cloned team-member with data
         clone.querySelector('.name-text').textContent = name;
         clone.querySelector('.team-member-img').src = imageUrl;
-        clone.querySelector('.role').src = role;
+        clone.querySelector('.role').textContent = role;
         clone.querySelector('.email-address').textContent = email;
         clone.querySelector('.bg-description').textContent = description;
 
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const description = metadata.description;
     
                         // create a new teamMember element
-                        const teamMemberElement = createTeamMemberElement(name, imageUrl, email, description);
+                        const teamMemberElement = createTeamMemberElement(name, imageUrl, role, email, description);
     
                         // append the teamMember element to the teamMember section
                         const teamMemberSection = document.getElementById('team');
