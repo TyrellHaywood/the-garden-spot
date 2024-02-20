@@ -37,7 +37,7 @@ a {
 
 #imageOne-img {
   width: 100%;
-  height: 300px;
+  height: auto;
   background-color: #d9d9d9;
   border-radius: 30px;
 }
@@ -52,20 +52,22 @@ a {
 
 #imageTwo-img {
   width: 100%;
-  height: 300px;
+  height: auto;
   background-color: #d9d9d9;
   border-radius: 30px;
 }
 
 .hero-img {
   width: 90%;
-  height: 300px;
+  max-width: 550px;
+  height: auto;
   background-color: #d9d9d9;
   border-radius: 30px;
 }
 
 .hero-text {
   width: 90%;
+  max-width: 550px;
   margin-top: 8px;
   font-family: "Noto Sans";
   font-size: 12px;
@@ -73,20 +75,22 @@ a {
 
 /* -----0o00-0oo0*.o0--ABOUT-US-STYLES--Oo.o*0o*----- */
 #about-us {
+  width: 90%;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 35px;
   font-family: "Noto Sans";
 }
 
 #about-us-h1{
   font-size: 40px;
-  width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
 
 #about-us-p {
   font-size: 12px;
-  width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -107,10 +111,12 @@ a {
 }
 
 #team-h1{
+  width: 100%;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 40px;
   font-family: "Noto Sans";
-  margin-right: auto;
-  /* margin-bottom: 35px; */
 }
 
 #team-members {
@@ -126,14 +132,15 @@ a {
 .team-member {
   display: flex;
   flex-direction: column;
-  margin-left: 35px;
+  margin-left: 17.5px;
+  margin-right: 17.5px;
   margin-top: 35px;
   max-width: 275px;
 }
 
 .headshot {
-  height: 275px; /* fix later!! */
-  width: 100%;
+  height: auto; /* fix later!! */
+  width: auto;
   max-height: 275px;
   max-width: 275px;
   background-color: #d9d9d9;
@@ -141,9 +148,10 @@ a {
 }
 
 .team-member-img {
-  width: 100%;
-  height: 100%;
+  width: 275px;
+  height: 275px;
   border-radius: 100%;
+  object-fit: cover;
 }
 
 .info {
