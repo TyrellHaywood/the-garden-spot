@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'Rainball';
-    src: url('fonts/Rainball.ttf') format('truetype');
-}
+
 
 :root {
   --bg: #fef0db;
@@ -289,8 +286,8 @@ a {
 }
 
 #contact-h1 {
-  font-family: "Rainball";
-  font-size: 84px;
+  font-family: "Shrikhand";
+  font-size: 64px;
   color: var(--green);
 }
 
