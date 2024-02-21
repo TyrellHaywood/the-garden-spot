@@ -33,6 +33,8 @@ header {
   position: fixed;
   top: 0;
   transition: .1s;
+  background-color: white;
+  border-bottom: 1px solid var(--green);
 }
 
 #menu-items {
@@ -74,8 +76,8 @@ nav {
   height: 75px;
   display: flex;
   align-items: center;
-  background-color: white;
-  border-bottom: 1px solid var(--green);
+  /* background-color: white;
+  border-bottom: 1px solid var(--green); */
 }
 
 #logo {
@@ -187,4 +189,43 @@ footer {
 .social-button i {
   color: white;
   font-size: 40px;
+}
+
+/* -----0o00-0oo0*.o0--MEDIA-QUERIES--Oo.o*0o*----- */
+
+/* nav bar */
+@media only screen and (min-width: 600px) {
+  #menu-items {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    margin-top: -75px;
+    /* margin-right: 15px; */
+  }
+  
+  #menu-items a {
+    margin-right: 15px;
+    font-size: 16px;
+    font-family: "Shrikhand";
+    color: var(--black)
+  }
+  #menu-items a:hover{
+    color: var(--green);
+    transition: .2s;
+  }
+
+  #toggle-menu span{
+    display: none;
+  }
+
+  nav {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
