@@ -44,7 +44,8 @@ a {
 #info-container {
   width: 90%;
   max-width: 550px;
-  height: 400px;
+  height: auto;
+  min-height: 400px;
   background-color: white;
   border-radius: 30px;
   margin-left: auto;
@@ -73,6 +74,8 @@ a {
 
 #info-p {
   margin-top: 8px;
+  margin-bottom: 0px;
+  background-color: blue;
   font-size: 16px;
   width: 80%;
 }
@@ -86,7 +89,7 @@ a {
   font-size: 12px;
   font-weight: 700;
   color: white;
-  margin-top: 75px;
+  margin-top: 20%;
   margin-right: auto;
   margin-left: 10%;
   margin-bottom: 30px;
@@ -328,24 +331,8 @@ a {
     font-family: "Noto Sans";
     transition: .1s;
   }
-/*   
-  #info-container.menu-opened {
-    margin-top: 50px;
-    transition: .1s;
-  }
-  
-  #info-h1 {
-    font-size: 40px;
-    width: 80%;
-    margin-top: 50px;
-    margin-bottom: 0px;
-    font-weight: 700;
-    font-family: "Noto Sans";
-  }
-  
-  #info-p {
-    margin-top: 8px;
-    font-size: 16px;
-    width: 80%;
+/* 
+  .learn-more {
+    margin-top: 10%;
   } */
 }
