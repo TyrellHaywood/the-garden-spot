@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const mainSpotlightElement = createMainSpotlightElement(imageUrl, description);
 
                 // append the main spotlight element to the main spotlight section
-                const mainSpotlightSection = document.getElementById('spotlight');
+                const mainSpotlightSection = document.getElementById('main-spotlights');
                 mainSpotlightSection.appendChild(mainSpotlightElement);
             })
             .catch(error => {
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const spotlightElement = createSpotlightElement(imageUrl, description);
 
                     // append the spotlight element to the spotlight section
-                    const spotlightSection = document.getElementById('spotlight');
+                    const spotlightSection = document.getElementById('small-spotlights');
                     spotlightSection.appendChild(spotlightElement);
                 })
                 .catch(error => {
