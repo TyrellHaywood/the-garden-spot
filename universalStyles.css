@@ -77,8 +77,6 @@ nav {
   height: 75px;
   display: flex;
   align-items: center;
-  /* background-color: white;
-  border-bottom: 1px solid var(--green); */
 }
 
 #logo {
@@ -142,12 +140,12 @@ footer {
 }
   
 .footer-p {
-    font-size: 12px;
+    font-size: 16px;
     margin: 0px;
 } 
   
 .email {
-  font-size: 12px;
+  font-size: 16px;
   margin-top: 8px;
   margin-bottom: 8px;
   color: white;
@@ -206,7 +204,6 @@ footer {
     justify-content: right;
     align-items: center;
     margin-top: -75px;
-    /* margin-right: 15px; */
   }
   
   #menu-items a {
@@ -229,4 +226,34 @@ footer {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+/* font size updates + spacing! */
+@media only screen and (min-width: 1024px) {
+  #header-text a{
+    font-size: 20px;
+  }
+
+  #menu-items a {
+    font-size: 20px;
+    margin-right: 25px;
+  }
+
+  #footer-h1 {
+    font-size: 24px;
+}
+  
+.footer-p {
+    font-size: 20px;
+} 
+  
+.email {
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#copyright {
+  margin-top: 15px;
+}
 }
