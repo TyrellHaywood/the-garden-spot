@@ -32,13 +32,13 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #imageOne-img {
   width: 100%;
   height: auto;
-  background-color: #d9d9d9;
   border-radius: 30px;
 }
 
@@ -53,7 +53,6 @@ a {
 #imageTwo-img {
   width: 100%;
   height: auto;
-  background-color: #d9d9d9;
   border-radius: 30px;
 }
 
@@ -61,7 +60,6 @@ a {
   width: 90%;
   max-width: 550px;
   height: auto;
-  background-color: #d9d9d9;
   border-radius: 30px;
 }
 
@@ -76,20 +74,37 @@ a {
 /* -----0o00-0oo0*.o0--ABOUT-US-STYLES--Oo.o*0o*----- */
 #about-us {
   width: 90%;
+  max-width: 1190px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  font-family: "Noto Sans";
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#about-us-content {
+  width: auto;
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 35px;
-  font-family: "Noto Sans";
 }
 
 #about-us-h1{
+  width: 90%;
+  height: 65px;
+  max-width: 550px;
   font-size: 40px;
   margin-left: auto;
   margin-right: auto;
 }
 
 #about-us-p {
+  width: 90%;
+  max-width: 550px;
   font-size: 12px;
   margin-left: auto;
   margin-right: auto;
@@ -143,7 +158,6 @@ a {
   width: auto;
   max-height: 275px;
   max-width: 275px;
-  background-color: #d9d9d9;
   border-radius: 100%;
 }
 
@@ -158,7 +172,7 @@ a {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  font-size: 16px;
+  font-size: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -171,7 +185,7 @@ a {
   margin-right: auto;
   margin-top: 15px;
   text-align: center;
-  font-size: 24px;
+  font-size: 16px;
 }
 
 .role {
@@ -186,3 +200,53 @@ a {
 .bg-description {
   display: none;
 }
+
+
+/* -----0o00-0oo0*.o0--MEDIA-QUERIES--Oo.o*0o*----- */
+
+/* font size updates + spacing! */
+@media only screen and (min-width: 1024px) {
+  #about-us-h1, #team-h1 {
+    font-size: 48px;
+  }
+  
+  .name-text {
+    font-size: 20px;
+  }
+
+  #about-us-p, #imageOne-p, #imageTwo-p, .info {
+    font-size: 16px;
+  }
+
+}
+
+/* top section layout changes! */
+@media only screen and (min-width: 1223px) {
+  #about-us {
+    justify-content: center;
+    align-items: center;
+  }
+  #about-us-content {
+    margin: 0;
+    width: 50%;
+  }
+
+  #imageOne {
+    margin: 0;
+    width: 50%;
+    max-width: 700px;
+  }
+  #hero-imgOne {
+    width: 100%;
+  }
+  #about-us-h1{
+    width: 100%;
+
+  }
+  
+  #about-us-p {
+    width: 100%;
+
+  }
+}
+
