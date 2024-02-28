@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const eventElement = createEventElement(imageUrl, description);
 
                     // append the event element to the event section
-                    const eventSection = document.getElementById('events');
+                    const eventSection = document.getElementById('events-container');
                     eventSection.appendChild(eventElement);
                 })
                 .catch(error => {
