@@ -186,3 +186,14 @@ a {
 .bg-description {
   display: none;
 }
+
+
+/* -----0o00-0oo0*.o0--MEDIA-QUERIES--Oo.o*0o*----- */
+
+@media only screen and (min-width: 950px) {
+  
+}
+
+/* font size updates + spacing! */
+@media only screen and (min-width: 1024px) {
+}

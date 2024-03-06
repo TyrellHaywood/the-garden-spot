@@ -472,6 +472,9 @@ a {
     font-size: 16px;
   }
 
+
+}
+
 @media only screen and (min-width: 1190px) {
   
   #main-spotlights {
@@ -489,5 +492,4 @@ a {
   .spotlight {
     margin-left: 45px;
   }
-}
 }
