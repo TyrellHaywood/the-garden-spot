@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // GET request to retrieve data from GitHub for spotlights
     const repository = 'TyrellHaywood/the-garden-spot';
-    const branch = 'main'; // or 'master', depending on your repository's default branch
+    const branch = 'main'; 
 
     const volunteerImgUrl = `https://api.github.com/repos/${repository}/contents/_posts/volunteerImg?ref=${branch}`;
     const getInvolvedUrl = `https://api.github.com/repos/${repository}/contents/_posts/getInvolved?ref=${branch}`;

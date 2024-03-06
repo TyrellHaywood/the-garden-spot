@@ -6,8 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitButton = document.getElementById("submit");
     const signUpForm = document.getElementById('sign-up-form');
 
-    // event listeners
-    const webURL = 'https://script.google.com/macros/s/AKfycbwnnXLPii6tPuTZuQ3R4ZXSiLmFZN9bWKEj0_guO-h9AOif9Rbmb0K_s5moeKC0o-CtrQ/exec'; 
+    // event listeners // 
+    // new url: https://script.google.com/macros/s/AKfycbz9o8cRyKDtFi41RFRel1gDKg6qlKN638iXGA9RenCzXyq8_IIOtbl0YYvC6qMUy44zaA/exec
+    // old url: https://script.google.com/macros/s/AKfycbwnnXLPii6tPuTZuQ3R4ZXSiLmFZN9bWKEj0_guO-h9AOif9Rbmb0K_s5moeKC0o-CtrQ/exec
+    const webURL = 'https://script.google.com/macros/s/AKfycbz9o8cRyKDtFi41RFRel1gDKg6qlKN638iXGA9RenCzXyq8_IIOtbl0YYvC6qMUy44zaA/exec'; 
     submitButton.addEventListener("click", (e) => {
         e.preventDefault();
         alert("Form Submitted!");
