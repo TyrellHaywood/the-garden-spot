@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const aboutUsElement = createAboutUsElement(bodyOfText);
 
                         // append the about-us element to the about-us section
-                        const aboutUsSection = document.getElementById('about-us');
+                        const aboutUsSection = document.getElementById('about-us-content');
                         aboutUsSection.appendChild(aboutUsElement);
                     })
                     .catch(error => {
